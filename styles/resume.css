@@ -1,0 +1,259 @@
+:root {
+  --accent: #141466;
+  --red: #e61a1a;
+  --footer-bg: #0f0f11;
+  --text: #222;
+}
+
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  padding: 28px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.brand-sub {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #9b9b9b;
+}
+
+.main-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.nav-link.active {
+  color: var(--red);
+}
+
+/* Hamburger (mặc định ẩn ở desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text);
+  position: absolute;
+  right: 0;
+}
+
+/* Overlay cho mobile menu */
+.nav-overlay {
+  display: none;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+  flex: 1;
+}
+
+.haaga-logo {
+  width: 180px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 36px;
+}
+
+.resume-section {
+  margin-bottom: 28px;
+  background: #f7f8fc;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.resume-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resume-section p,
+.resume-section li,
+.resume-section div {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.resume-section ul {
+  padding-left: 18px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+/* TABLE */
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.skills-table th,
+.skills-table td {
+  border: 1px solid #ddd;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.skills-table th {
+  background: var(--accent);
+  color: #fff;
+}
+
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: var(--footer-bg);
+  color: #fff;
+  padding: 16px 0;
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.left-foot {
+  font-size: 15px;
+}
+
+.right-foot {
+  display: flex;
+  gap: 30px;
+  font-weight: 700;
+}
+
+.euro {
+  color: #2aa8ff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Hiện nút 3 gạch trên mobile */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Ẩn menu mặc định */
+  .main-nav {
+    display: none;
+  }
+
+  /* Menu khi active */
+  .main-nav.active {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(80vw, 320px);
+    padding: 28px;
+    background: #fff;
+    box-shadow: -16px 0 32px rgba(0,0,0,0.15);
+    border-radius: 20px 0 0 20px;
+    z-index: 1500;
+  }
+
+  .main-nav .nav-link {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  /* Overlay khi menu mở */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1400;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    display: block;
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .resume-section {
+    font-size: 13px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
