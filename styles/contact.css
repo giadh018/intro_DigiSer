@@ -1,0 +1,270 @@
+:root {
+  --accent: #141466;
+  --red: #e61a1a;
+  --footer-bg: #0f0f11;
+  --text: #222;
+  --teal: teal;
+  --contact-bg: #B9B9E9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: #fff;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* HEADER */
+.site-header {
+  padding: 28px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.brand-sub {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #9b9b9b;
+}
+
+.main-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.nav-link.active {
+  color: var(--red);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* TITLE */
+.haaga-logo {
+  width: 220px;
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--teal);
+  margin: 20px 0 40px;
+}
+
+/* CONTACT FORM CARD */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: #f9fdfd;
+  border-radius: 18px;
+  padding: 28px 20px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.08);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+
+.form-row input {
+  flex: 1;
+}
+
+input,
+textarea {
+  padding: 14px;
+  border: 2px solid var(--teal);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/*   BUTTON   */
+.btn-project {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-project:hover {
+  background: #0c7974;
+  transform: translateY(-2px);
+}
+
+.btn-project:active {
+  transform: scale(0.95);
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--footer-bg);
+  color: #fff;
+  padding: 20px 0;
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.euro {
+  color: #2aa8ff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+.nav-toggle{
+  display: none;
+  background: transparent;
+  border: 0;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.nav-overlay{
+  display: none;
+}
+
+@media (max-width: 768px){
+  .header-inner{
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-toggle{
+    display: block;
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1501;
+  }
+
+  .main-nav{
+    display: none;
+  }
+
+  .main-nav.active{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(86vw, 360px);
+    padding: 28px;
+    background: #fff;
+    box-shadow: -16px 0 32px rgba(0,0,0,.15);
+    border-radius: 20px 0 0 20px;
+    z-index: 1500;
+  }
+
+  .main-nav .nav-link{
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .nav-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.25);
+    z-index: 1400;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    display: block;
+  }
+
+  .nav-overlay.open{
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
